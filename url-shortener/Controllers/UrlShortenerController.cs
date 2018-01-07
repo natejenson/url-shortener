@@ -27,11 +27,12 @@ namespace url_shortener.Controllers
                     Data = null
                 });
             }
+            var shortened = Shorten(parsedUrl);
             return Ok(new ResponseModel
             {
                 StatusCode = 200,
                 Message = null,
-                Data = new { url = parsedUrl, original = url }
+                Data = new { url = shortened, original = url }
             });
         }
 
