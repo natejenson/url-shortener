@@ -7,8 +7,8 @@ namespace url_shortener.Models
 {
     public class ResponseModel
     {
-        int StatusCode { get; set; }
-        dynamic Data { get; set; }
-        string Message { get; set; }
+        public int StatusCode { get; set; }
+        public dynamic Data { get; set; }
+        public string Message { get; set; }
     }
 }
