@@ -33,5 +33,11 @@ namespace url_shortener.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Route("/go/")]
+        public IActionResult Redirect()
+        {
+            return new RedirectResult("https://github.com/natejenson");
+        }
     }
 }
