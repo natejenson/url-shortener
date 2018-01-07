@@ -14,7 +14,7 @@ namespace url_shortener.Controllers
     {   
         // POST: api/shorten/
         [HttpPost]
-        public IActionResult Post([FromBody]string url)
+        public IActionResult ShortenUrl([FromBody]string url)
         {
             // validate url
             if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri parsedUrl))

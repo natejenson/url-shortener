@@ -37,6 +37,13 @@ namespace url_shortener.Controllers
         [Route("/go/")]
         public IActionResult Redirect()
         {
+            // TODO: get url Path as argument
+
+            // TODO: create Url lookup service
+            // TODO: lookup url path in data store
+
+            // TODO: return 404 or redirect result
+
             return new RedirectResult("https://github.com/natejenson");
         }
     }
