@@ -20,14 +20,14 @@ namespace url_shortener.Controllers
             Uri parsedUrl;
             if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out parsedUrl))
             {
-                return new ObjectResult(new ResponseModel
+                return BadRequest(new ResponseModel
                 {
                     StatusCode = 400,
                     Message = "Whoops! That doesn't appear to be a valid URL.",
                     Data = null
                 });
             }
-            return new ObjectResult(new ResponseModel
+            return Ok(new ResponseModel
             {
                 StatusCode = 200,
                 Message = null,
