@@ -5,13 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using url_shortener.Models;
+using url_shortener.Services;
 
 namespace url_shortener.Controllers
 {
     [Produces("application/json")]
     [Route("api/shorten")]
     public class UrlShortenerController : Controller
-    {   
+    {
+        private readonly UrlService UrlService;
+        public UrlShortenerController(UrlService urlService)
+        {
+            this.UrlService = urlService;
+        }
+
         // POST: api/shorten/
         [HttpPost]
         public IActionResult ShortenUrl([FromBody]string url)
@@ -26,18 +33,13 @@ namespace url_shortener.Controllers
                     Data = null
                 });
             }
-            var shortened = Shorten(parsedUrl);
+            var shortened = UrlService.ShortenAndSave(parsedUrl);
             return Ok(new ResponseModel
             {
                 StatusCode = 200,
                 Message = null,
                 Data = new { url = shortened, original = url }
             });
-        }
-
-        public Uri Shorten(Uri url)
-        {
-            return new Uri("https://duckduckgo.com/?q=github");
         }
     }
 }

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace url_shortener.DataAccess
 {
-    interface IUrlRepository
+    public interface IUrlRepository
     {
-        
+        bool Save(Uri original, Uri newUrl);
+        bool Get(Uri url);
     }
 }
