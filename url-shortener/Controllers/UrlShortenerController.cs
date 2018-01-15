@@ -13,8 +13,8 @@ namespace url_shortener.Controllers
     [Route("api/shorten")]
     public class UrlShortenerController : Controller
     {
-        private readonly UrlService UrlService;
-        public UrlShortenerController(UrlService urlService)
+        private readonly IUrlService UrlService;
+        public UrlShortenerController(IUrlService urlService)
         {
             this.UrlService = urlService;
         }

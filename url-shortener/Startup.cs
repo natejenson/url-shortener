@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using url_shortener.DataAccess;
+using url_shortener.Services;
 
 namespace url_shortener
 {
@@ -22,6 +24,8 @@ namespace url_shortener
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<IUrlRepository, InMemoryUrlRepository>();
+            services.AddTransient<IUrlService, UrlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -14,7 +14,6 @@ namespace url_shortener.Services
             this.UrlRepository = urlRepository;
         }
 
-        // Shorten the given URL and save its mapping.
         public Uri ShortenAndSave(Uri original)
         {
             var shortened = new Uri("https://duckduckgo.com/?q=github");
