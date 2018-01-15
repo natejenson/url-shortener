@@ -14,6 +14,11 @@ namespace url_shortener.Services
             this.UrlRepository = urlRepository;
         }
 
+        public Uri Get(Uri url)
+        {
+           return UrlRepository.Get(url);
+        }
+
         public Uri ShortenAndSave(Uri original)
         {
             var shortened = new Uri("https://duckduckgo.com/?q=github");
