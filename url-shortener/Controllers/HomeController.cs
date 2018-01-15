@@ -16,24 +16,22 @@ namespace url_shortener.Controllers
             this._urlService = urlService;
         }
 
+        [HttpGet]
+        [Route("/")]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("/go/{url}")]
-        public IActionResult GoToMapping(string url)
+        [Route("/{path}")]
+        public IActionResult GoToMapping(string path)
         {
-            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri parsedUrl))
+            var mapped = _urlService.Get(path);
+            if (mapped != null)
             {
-                var mapped = _urlService.Get(parsedUrl);
-                if (mapped != null)
-                {
-                    return new RedirectResult(mapped.ToString());
-                }
+                return new RedirectResult(mapped.ToString());
             }
-
             return NotFound();
         }
     }

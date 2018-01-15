@@ -14,15 +14,17 @@ namespace url_shortener.Services
             this.UrlRepository = urlRepository;
         }
 
-        public Uri Get(Uri url)
+        public Uri Get(string path)
         {
-           return UrlRepository.Get(url);
+           return UrlRepository.Get(path);
         }
 
         public Uri ShortenAndSave(Uri original)
         {
-            var shortened = new Uri("https://duckduckgo.com/?q=github");
-            UrlRepository.Save(original, shortened);
+            var baseUrl = new Uri("http://localhost:50178/");
+            var randomPath = "fancy-unicorn";
+            var shortened = new Uri(baseUrl, randomPath);
+            UrlRepository.Save(randomPath, original);
             return shortened;
         }
     }

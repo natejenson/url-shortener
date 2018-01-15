@@ -15,14 +15,19 @@ namespace url_shortener.DataAccess
             this.repo = new ConcurrentDictionary<string, string>();
         }
 
-        public Uri Get(Uri url)
+        public Uri Get(string path)
         {
-            throw new NotImplementedException();
+            if (repo.TryGetValue(path, out string url))
+            {
+                // TODO: check the url is valid, just in case.
+                return new Uri(url);
+            }
+            return null;
         }
 
-        public bool Save(Uri original, Uri newUrl)
+        public bool Save(string path, Uri url)
         {
-            if(!repo.TryAdd(original.ToString(), newUrl.ToString()))
+            if(!repo.TryAdd(path, url.ToString()))
             {
                 return false;
             }

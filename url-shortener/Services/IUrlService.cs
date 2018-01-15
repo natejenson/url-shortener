@@ -10,9 +10,9 @@ namespace url_shortener.Services
         /// <summary>
         /// Get the url that maps to the given one.
         /// </summary>
-        /// <param name="uri"></param>
+        /// <param name="path"></param>
         /// <returns>The mapped url, or null if none exists.</returns>
-        Uri Get(Uri uri);
+        Uri Get(string path);
         Uri ShortenAndSave(Uri url);
     }
 }

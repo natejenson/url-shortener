@@ -7,14 +7,14 @@ namespace url_shortener.DataAccess
 {
     public interface IUrlRepository
     {
-        Uri Get(Uri url);
+        Uri Get(string path);
 
         /// <summary>
         /// Save the url mapping.
         /// </summary>
-        /// <param name="original"></param>
-        /// <param name="newUrl"></param>
-        /// <returns></returns>
-        bool Save(Uri original, Uri newUrl);
+        /// <param name="path"></param>
+        /// <param name="url"></param>
+        /// <returns>False if the path already exists, true otherwise.</returns>
+        bool Save(string path, Uri url);
     }
 }
