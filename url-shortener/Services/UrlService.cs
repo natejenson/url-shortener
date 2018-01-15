@@ -6,7 +6,7 @@ using url_shortener.DataAccess;
 
 namespace url_shortener.Services
 {
-    public class UrlService
+    public class UrlService : IUrlService
     {
         private readonly IUrlRepository UrlRepository;
         public UrlService(IUrlRepository urlRepository)
