@@ -23,6 +23,24 @@ namespace url_shortener.Controllers
             return View();
         }
 
+        // POST: /shorten/
+        [HttpPost]
+        [Route("/")]
+        public IActionResult ShortenUrl(string url)
+        {
+            var view = View("Index");
+            // validate url
+            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri parsedUrl))
+            {
+                ViewData["error"] = "Whoops! That doesn't appear to be a valid URL...";
+                return view;
+            }
+            var shortened = _urlService.ShortenAndSave(parsedUrl);
+            ViewData["shortened"] = shortened.AbsoluteUri.ToString();
+
+            return view;
+        }
+
         [HttpGet]
         [Route("/{path}")]
         public IActionResult GoToMapping(string path)
