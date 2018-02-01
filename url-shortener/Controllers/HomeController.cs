@@ -30,14 +30,14 @@ namespace url_shortener.Controllers
         {
             var view = View("Index");
             // validate url
-            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri parsedUrl))
+            if (Uri.TryCreate(url, UriKind.Absolute, out Uri parsedUrl))
             {
-                ViewData["error"] = "Whoops! That doesn't appear to be a valid URL...";
+                var shortened = _urlService.ShortenAndSave(parsedUrl);
+                TempData["shortened"] = shortened.AbsoluteUri.ToString();
                 return view;
             }
-            var shortened = _urlService.ShortenAndSave(parsedUrl);
-            ViewData["shortened"] = shortened.AbsoluteUri.ToString();
 
+            TempData["error"] = "Whoops! That doesn't appear to be a valid URL...";
             return view;
         }
 

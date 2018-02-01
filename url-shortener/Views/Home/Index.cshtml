@@ -2,31 +2,33 @@
     ViewData["Title"] = "Url Shortener";
 }
 <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-        <form action="/" method="post" class="form-inline">
-            <div class="input-group mb-3">
-                <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
-                <div class="input-group-append">
-                    <button type="submit" class="input-group-btn" id="basic-addon2">Shorten!</button>
+    <div class="col-sm"></div>
+    <div class="col-sm">
+        <div class="url-panel">
+            <form action="/" method="post" class="form-inline">
+                <div class="input-group mb-3">
+                    <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-btn" id="basic-addon2">Shorten!</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-    <div class="col-xs-4"></div>
+    <div class="col-sm"></div>
 </div>
 <div class="row">
     @{
-        if (ViewData.TryGetValue("shortened", out var url))
+        if (TempData.TryGetValue("shortened", out var url))
         {
-            <div>
-                <span>New Url: </span> <a href="@url.ToString()">@url.ToString()</a>
+            <div class="alert alert-success" role="alert">
+                You did it! Your new shortened URL is <a href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a>
             </div>
         }
-        else if (ViewData.TryGetValue("error", out var err))
+        else if (TempData.TryGetValue("error", out var err))
         {
-            <div>
-                <span>ERROR: @err.ToString()</span>
+            <div class="alert alert-warning" role="alert">
+                @err.ToString()
             </div>
         }
     }

@@ -24,7 +24,7 @@ namespace url_shortener.Controllers
         public IActionResult ShortenUrl([FromBody]string url)
         {
             // validate url
-            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri parsedUrl))
+            if (!Uri.TryCreate(url, UriKind.Absolute, out Uri parsedUrl))
             {
                 return BadRequest(new ResponseModel
                 {
