@@ -2,26 +2,18 @@
     ViewData["Title"] = "Url Shortener";
 }
 <div class="row">
-        <div class="row">
-            <div class="col-xs-4"></div>
-            <div class="col-xs-4">
-                <form action="/" method="post" class="form-inline">
-                    <div class="input-group">
-                        <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
-                        <div class="input-group-addon">
-                            <button type="submit" class="btn btn-secondary input-group-btn">Shorten!</button>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">Shorten!</span>
-                        </div>
-                    </div>
-                </form>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+        <form action="/" method="post" class="form-inline">
+            <div class="input-group mb-3">
+                <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-btn" id="basic-addon2">Shorten!</button>
+                </div>
             </div>
-            <div class="col-xs-4"></div>
-        </div>
+        </form>
+    </div>
+    <div class="col-xs-4"></div>
 </div>
 <div class="row">
     @{
