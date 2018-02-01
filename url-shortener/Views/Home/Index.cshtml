@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Url Shortener";
 }
-<div class="row">
+<div class="row" style="padding-top: 25px;">
     <div class="col-sm"></div>
     <div class="col-sm">
         <div class="url-panel">
@@ -18,18 +18,26 @@
     <div class="col-sm"></div>
 </div>
 <div class="row">
-    @{
-        if (TempData.TryGetValue("shortened", out var url))
-        {
-            <div class="alert alert-success" role="alert">
-                You did it! Your new shortened URL is <a href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a>
-            </div>
+    <div class="col-sm">
+        @{
+            if (TempData.TryGetValue("shortened", out var url))
+            {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            You did it! Your new shortened URL is <a href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+            }
+            else if (TempData.TryGetValue("error", out var err))
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    @err.ToString()
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
         }
-        else if (TempData.TryGetValue("error", out var err))
-        {
-            <div class="alert alert-warning" role="alert">
-                @err.ToString()
-            </div>
-        }
-    }
+    </div>
 </div>
