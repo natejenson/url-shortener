@@ -2,6 +2,44 @@
     padding-bottom: 20px;
 }
 
+.grid {
+    display: grid;
+    grid-auto-rows: 50px;
+    grid-template-rows: 40px 100px 100px 200px;
+    grid-template-areas:
+        ". . . . ."
+        ". h h h ."
+        ". i i i ."
+        ". r r r ."
+}
+
+.head-intro {
+    grid-area: h;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.input-box {
+    grid-area: i;
+    align-self: center;
+    justify-self: center;
+}
+
+.result-box {
+    grid-area: r;
+    align-self: center;
+    justify-self: center;
+}
+
+.url-panel {
+    align-self: center;
+    justify-self: center;
+}
+
+.navbar-custom a {
+    color: #FFFFFF;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -23,10 +61,6 @@
 /* QR code generator */
 #qrCode {
     margin: 15px;
-}
-
-.url-panel {
-    padding-top: 20px;
 }
 
 /* Hide/rearrange for smaller screens */
