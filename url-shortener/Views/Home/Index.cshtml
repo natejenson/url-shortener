@@ -2,24 +2,21 @@
     ViewData["Title"] = "Url Shortener";
 }
 
-<div class="row" style="padding-top: 25px;">
-    <div class="col-sm"></div>
-    <div class="col-sm">
-        <div class="url-panel">
-            <form action="/" method="post" class="form-inline">
-                <div class="input-group mb-3">
-                    <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
-                    <div class="input-group-append">
-                        <button type="submit" class="input-group-btn btn btn-primary" id="basic-addon2">Shorten!</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="grid">
+    <div class="head-intro">
+        Hey, you! Need a memorable URL?
     </div>
-    <div class="col-sm"></div>
-</div>
-<div class="row">
-    <div class="col-sm">
+    <div class="input-box">
+        <form action="/" method="post" class="form-inline">
+            <div class="input-group mb-3">
+                <input type="text" name="url" class="form-control" placeholder="https://www.google.com">
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-btn btn btn-primary" id="basic-addon2">Shorten!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="result-box">
         @{
             if (TempData.TryGetValue("shortened", out var url))
             {
@@ -41,4 +38,5 @@
             }
         }
     </div>
+    <div></div>
 </div>
