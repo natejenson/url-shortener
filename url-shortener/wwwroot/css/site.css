@@ -1,11 +1,13 @@
 ﻿body {
     padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .grid {
     display: grid;
     grid-auto-rows: 50px;
-    grid-template-rows: 40px 100px 100px 200px;
+    grid-template-rows: 40px 100px 50px 50px;
+    grid-row-gap: 40px;
     grid-template-areas:
         ". . . . ."
         ". h h h ."
@@ -16,7 +18,6 @@
 .head-intro {
     grid-area: h;
     text-align: center;
-    font-size: 3rem;
 }
 
 .input-box {
@@ -38,6 +39,10 @@
 
 .navbar-custom a {
     color: #FFFFFF;
+}
+
+.url-input {
+    width: 35rem !important;
 }
 
 /* Wrapping element */
