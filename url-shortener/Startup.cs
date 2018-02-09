@@ -24,6 +24,7 @@ namespace url_shortener
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<IWordRepository, InMemoryWordRepository>();
             services.AddSingleton<IUrlRepository, InMemoryUrlRepository>();
             services.AddTransient<IUrlService, UrlService>();
         }

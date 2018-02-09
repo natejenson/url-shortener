@@ -8,23 +8,25 @@ namespace url_shortener.Services
 {
     public class UrlService : IUrlService
     {
-        private readonly IUrlRepository UrlRepository;
-        public UrlService(IUrlRepository urlRepository)
+        private readonly IUrlRepository _urlRepository;
+        private readonly IWordRepository _wordRepository;
+        public UrlService(IUrlRepository urlRepository, IWordRepository wordRepository)
         {
-            this.UrlRepository = urlRepository;
+            _urlRepository = urlRepository;
+            _wordRepository = wordRepository;
         }
 
         public Uri Get(string path)
         {
-           return UrlRepository.Get(path);
+           return _urlRepository.Get(path);
         }
 
         public Uri ShortenAndSave(Uri original)
         {
             var baseUrl = new Uri("http://localhost:50178/");
-            var randomPath = "fancy-unicorn";
+            var randomPath = $"{_wordRepository.RandomAdjective()}-{_wordRepository.RandomNoun()}";
             var shortened = new Uri(baseUrl, randomPath);
-            UrlRepository.Save(randomPath, original);
+            _urlRepository.Save(randomPath, original);
             return shortened;
         }
     }
