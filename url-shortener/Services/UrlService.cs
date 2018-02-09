@@ -29,12 +29,12 @@ namespace url_shortener.Services
         public Uri ShortenAndSave(Uri original)
         {
             var randomPath = $"{_wordRepository.RandomAdjective()}-{_wordRepository.RandomNoun()}";
-            var shortened = new Uri(getBaseUrl(), randomPath);
+            var shortened = new Uri(GetBaseUrl(), randomPath);
             _urlRepository.Save(randomPath, original);
             return shortened;
         }
 
-        private Uri getBaseUrl()
+        private Uri GetBaseUrl()
         {
             var req = _httpContextAccessor.HttpContext.Request;
             return new Uri($"{req.Scheme}://{req.Host}/");
