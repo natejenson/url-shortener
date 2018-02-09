@@ -28,10 +28,17 @@ namespace url_shortener.Services
 
         public Uri ShortenAndSave(Uri original)
         {
-            var randomPath = $"{_wordRepository.RandomAdjective()}-{_wordRepository.RandomNoun()}";
-            var shortened = new Uri(GetBaseUrl(), randomPath);
-            _urlRepository.Save(randomPath, original);
-            return shortened;
+            // TODO: This will get slow once a significant percentage of word-combos are taken.
+            // Ideally, the UrlRepository would know which paths have been taken, and can produce
+            // a unique one every time.
+            while(true)
+            {
+                var randomPath = $"{_wordRepository.RandomAdjective()}-{_wordRepository.RandomNoun()}";
+                if (_urlRepository.Save(randomPath, original))
+                {
+                    return new Uri(GetBaseUrl(), randomPath);
+                }
+            }
         }
 
         private Uri GetBaseUrl()
