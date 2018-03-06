@@ -6,7 +6,7 @@
 .grid {
     display: grid;
     grid-auto-rows: 50px;
-    grid-template-rows: 40px 100px 50px 50px;
+    grid-template-rows: 40px 100px 50px 1fr;
     grid-row-gap: 40px;
     grid-template-areas:
         ". . . . ."
@@ -32,9 +32,17 @@
     justify-self: center;
 }
 
+.result-box .success-panel {
+    text-align: center;
+}
+
 .url-panel {
     align-self: center;
     justify-self: center;
+}
+
+.new-link {
+    font-size: larger;
 }
 
 .navbar-custom a {
