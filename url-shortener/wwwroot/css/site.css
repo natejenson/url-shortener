@@ -58,4 +58,8 @@
     .carousel-caption {
         display: none;
     }
+
+    .url-input {
+        width: 16rem !important;
+    }
 }
