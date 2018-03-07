@@ -24,9 +24,9 @@
             <div class="alert alert-success success-panel" role="alert">
                 <h4 class="alert-heading">You did it!</h4>
                 <p>Your new human-readable url is:</p>
-                <p class="new-link"><a href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a></p>
+                <p class="new-link"><a id ="short-url" href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a></p>
                 <hr>
-                <button type="button" class="btn btn-light">Copy</button>
+                <button id="copy-button" type="button" class="btn btn-light">Copy</button>
             </div>
     }
     else if (TempData.TryGetValue("error", out var err))
