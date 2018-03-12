@@ -3,6 +3,9 @@ $(function () {
     $('#copy-button').click(function () {
         copyHrefToClipboard($('#short-url'));
     });
+
+    // enable tooltips
+    $('[data-toggle="tooltip"]').tooltip()
 });
 
 function copyHrefToClipboard(element) {

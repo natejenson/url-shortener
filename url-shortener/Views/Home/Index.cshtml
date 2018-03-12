@@ -19,25 +19,27 @@
     </div>
     <div class="result-box">
         @{
-        if (TempData.TryGetValue("shortened", out var url))
-        {
-            <div class="alert alert-success success-panel" role="alert">
-                <h4 class="alert-heading">You did it!</h4>
-                <p>Your new human-readable url is:</p>
-                <p class="new-link"><a id ="short-url" href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a></p>
-                <hr>
-                <button id="copy-button" type="button" class="btn btn-light">Copy</button>
+            if (TempData.TryGetValue("shortened", out var url))
+            {
+            <div class="card success-panel">
+                <div class="card-body">
+                    <h5 class="card-title">You did it!</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Your new human-readable url is below</h6>
+                    <a id="short-url" href="@url.ToString()" target="_blank" class="alert-link">@url.ToString()</a>
+                    <hr />
+                    <button id="copy-button" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy</button>
+                </div>
             </div>
-    }
-    else if (TempData.TryGetValue("error", out var err))
-    {
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            @err.ToString()
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-}
+            }
+            else if (TempData.TryGetValue("error", out var err))
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    @err.ToString()
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
         }
     </div>
     <div></div>
