@@ -1,6 +1,7 @@
 ﻿body {
     padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
+    background: linear-gradient(#cc2b5e, #753a88) fixed;
 }
 
 .grid {
@@ -18,6 +19,11 @@
 .head-intro {
     grid-area: h;
     text-align: center;
+    color: #FFFFFF;
+}
+
+.head-intro > h1 {
+    font-weight: 600;
 }
 
 .input-box {
@@ -39,6 +45,11 @@
 .url-panel {
     align-self: center;
     justify-self: center;
+}
+
+#search-btn {
+    background: rgb(102, 113, 255);
+    color: #FFFFFF;
 }
 
 .new-link {
