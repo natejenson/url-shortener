@@ -19,8 +19,12 @@ namespace url_shortener.DataAccess
         {
             if (repo.TryGetValue(path, out string url))
             {
-                // TODO: check the url is valid, just in case.
-                return new Uri(url);
+                // Check the url is valid, just in case.
+                if (Uri.TryCreate(url, UriKind.Absolute, out Uri parsedUrl))
+                {
+                    return parsedUrl;
+                }
+                throw new Exception($"URL from repo ({url}) isn't valid. Something went wrong.");
             }
             return null;
         }
